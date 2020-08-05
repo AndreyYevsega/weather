@@ -1,0 +1,104 @@
+@import 'styles/variables';
+@import 'styles/media';
+
+.day-weather {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  transition: 250ms;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 6px rgba(150, 150, 150, 0.5);
+
+    @include small {
+      box-shadow: 0 1px 2px rgba(150, 150, 150, 0.5);
+    }
+
+    &:active {
+      box-shadow: 0 0 3px rgba(150, 150, 150, 0.5);
+
+      @include small {
+        box-shadow: 0 1px 1px rgba(150, 150, 150, 0.5);
+      }
+    }
+  }
+
+  @include small {
+    flex-direction: row;
+    height: auto;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &_selected {
+    position: relative;
+
+    &::after {
+      content: '';
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $accent;
+
+      @include small {
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__day {
+    text-transform: uppercase;
+    font-size: 20px;
+
+    @include small {
+      display: none;
+    }
+
+    &_small {
+      display: none;
+      font-size: 20px;
+      text-transform: none;
+      margin-right: auto;
+
+      @include small {
+        display: inline;
+      }
+    }
+  }
+
+  &__icon {
+    height: 50px;
+
+    @include small {
+      margin-right: 20px;
+    }
+  }
+
+  &__temperature {
+    font-size: 22px;
+    position: relative;
+
+    &:after {
+      content: '';
+      height: 3px;
+      width: 3px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+      top: 6px;
+      right: -7px;
+    }
+  }
+}
